@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="11e26517-c587-4956-850a-f805d579f6c6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/proyecto_ASEG_SW.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/TasksApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/application/ports/out/TaskRepositoryPort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/application/usecases/TaskUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/domain/model/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/domain/model/TaskStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/infrastructure/adapters/out/persistence/SpringDataTaskRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/infrastructure/adapters/out/persistence/TaskEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/infrastructure/adapters/out/persistence/TaskPersistenceAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/TaskController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/dto/TaskCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/dto/TaskResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/mapper/TaskMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/sqa/QualityScoringEngine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TaskUseCaseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TasksApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TestTasksApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TestcontainersConfiguration.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="3DSUP5n6SoiqxRUmWiW9x2VSAux" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TasksApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/gmlop/Desktop/ESPE/Septimo/aseguramiento/parcial_1/proyecto_ASEG_SW",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.empresas.tasks" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11e26517-c587-4956-850a-f805d579f6c6" name="Changes" comment="" />
+      <created>1778274937256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1778274937256</updated>
+    </task>
+    <servers />
+  </component>
+</project>
