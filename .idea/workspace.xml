@@ -5,39 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11e26517-c587-4956-850a-f805d579f6c6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proyecto_ASEG_SW.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/TasksApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/application/ports/out/TaskRepositoryPort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/application/usecases/TaskUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/domain/model/Task.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/domain/model/TaskStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/infrastructure/adapters/out/persistence/SpringDataTaskRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/infrastructure/adapters/out/persistence/TaskEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/infrastructure/adapters/out/persistence/TaskPersistenceAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/TaskController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/dto/TaskCreateDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/dto/TaskResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/interfaces/rest/mapper/TaskMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/java/com/empresas/tasks/sqa/QualityScoringEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TaskUseCaseTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TasksApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TestTasksApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/src/test/java/com/empresas/tasks/TestcontainersConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda/src/main/java/com/empresa/tienda/domain/model/usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/tienda/src/main/java/com/empresa/tienda/domain/model/usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,24 +31,71 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TasksApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/gmlop/Desktop/ESPE/Septimo/aseguramiento/parcial_1/proyecto_ASEG_SW",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TasksApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gmlop/Desktop/ESPE/Septimo/aseguramiento/parcial_1/proyecto_ASEG_SW&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.empresas.tasks" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="proyecto_ASEG_SW" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="proyecto_ASEG_SW" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="proyecto_ASEG_SW" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="proyecto_ASEG_SW" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
