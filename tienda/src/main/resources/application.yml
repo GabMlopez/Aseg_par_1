@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: tienda
+
+  datasource:
+    url: jdbc:postgresql://pg-11663eb8-gamalop0104-b4a2.k.aivencloud.com:10581/defaultdb?sslmode=require
+    username: avnadmin
+    password: AVNS_KMuyGYRurI4DNtAq5-D
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+
+jwt:
+  secret: wqqv25sNNFHFBBDHJjfsdn2nsdo234om5dkd6fasqwqe112368v9wsa6czx641ads6as4wxx5g63ys
+  expiration: 86400000
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+logging:
+  level:
+    com.empresa.tienda: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
