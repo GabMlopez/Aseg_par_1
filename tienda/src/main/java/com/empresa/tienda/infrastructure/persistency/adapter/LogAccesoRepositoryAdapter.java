@@ -33,7 +33,6 @@ public class LogAccesoRepositoryAdapter implements LogAccesoRepositoryPort {
 
     @Override
     public List<LogAcceso> findByDate(LocalDateTime fecha) {
-        // Buscar por día completo (desde las 00:00:00 hasta las 23:59:59)
         LocalDateTime startOfDay = fecha.toLocalDate().atStartOfDay();
         LocalDateTime endOfDay = fecha.toLocalDate().atTime(23, 59, 59);
 

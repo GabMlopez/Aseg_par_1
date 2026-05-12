@@ -13,8 +13,6 @@ public interface JpaLogAccesoRepository extends JpaRepository<LogAccesoEntity, L
 
     List<LogAccesoEntity> findByUsuarioId(Long usuarioId);
 
-    List<LogAccesoEntity> findByFecha(LocalDateTime fecha);
-
     List<LogAccesoEntity> findByFechaBetween(LocalDateTime start, LocalDateTime end);
 
     @Query("SELECT l FROM LogAccesoEntity l WHERE DATE(l.fecha) = DATE(:fecha)")
