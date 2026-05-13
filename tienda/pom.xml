@@ -35,7 +35,7 @@
 		<mapstruct.version>1.6.3</mapstruct.version>
 		<sonar.coverage.exclusions>**/config/**</sonar.coverage.exclusions>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.organization>SonarTestOrg</sonar.organization>
+		<sonar.organization>gabdesarrolloseguro</sonar.organization>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Starters -->
