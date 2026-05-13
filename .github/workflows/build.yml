@@ -37,4 +37,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         working-directory: ./tienda
-        run: mvn clean verify sonar:sonar -Dsonar.projectKey=GabMlopez_Aseg_par_1
+        run: mvn clean verify sonar:sonar -Dsonar.token=$SONAR_TOKEN  -Dsonar.host.url=https://sonarcloud.io
