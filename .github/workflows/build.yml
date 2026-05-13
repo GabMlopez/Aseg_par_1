@@ -27,6 +27,12 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+      - name: Debug SonarCloud configuration
+          run: echo "Testing SonarCloud connection..."
+              curl -s -u ${{ secrets.SONAR_TOKEN }}: \
+              "https://sonarcloud.io/api/projects/search?projects=GabMlopez_Aseg_par_1" | grep -q "GabMlopez_Aseg_par_1" && \
+              echo " Project found in SonarCloud" || \
+              echo " Project NOT found in SonarCloud"
       - name: Cache Maven packages
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
@@ -36,4 +42,4 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=GabMlopez_Aseg_par_1 -Dsonar.host.url=https://sonarcloud.io
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=gabdesarrolloseguro -Dsonar.projectKey=GabMlopez_Aseg_par_1 -Dsonar.host.url=https://sonarcloud.io
