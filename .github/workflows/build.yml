@@ -23,6 +23,13 @@ jobs:
         # Usamos -DskipTests si quieres que el build no falle por el error de VentaServiceTest
         run: mvn clean verify -DskipTests
 
+      - name: Test SonarCloud connection
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          curl -X GET "https://sonarcloud.io/api/projects/search?organization=gabdesarrolloseguro" \
+            -H "Authorization: Bearer $SONAR_TOKEN"
+
       - name: SonarCloud Analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
