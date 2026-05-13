@@ -27,16 +27,6 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Debug SonarCloud token permissions
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          echo "Testing token permissions..."
-          echo "1. Checking if token is valid..."
-          curl -s -u "${SONAR_TOKEN}:" "https://sonarcloud.io/api/authentication/validate" | jq .
-
-          echo "2. Looking for project 'Aseg_par_1'..."
-          curl -s -u "${SONAR_TOKEN}:" "https://sonarcloud.io/api/projects/search?organization=gabdesarrolloseguro&projects=Aseg_par_1" | jq .
       - name: Cache Maven packages
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
