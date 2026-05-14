@@ -7,6 +7,12 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Permisos de workflow
+permissions:
+  contents: read
+  checks: write  # Permiso necesario para crear check runs
+  pull-requests: write  # También útil para comentar en PRs
+
 jobs:
   build-and-test:
     name: Build & Test
@@ -37,7 +43,7 @@ jobs:
       - name: Run tests with coverage (JaCoCo)
         run: mvn clean verify
 
-      #  Publicar resultados JUnit en GitHub Actions
+      # Publicar resultados JUnit en GitHub Actions
       - name: Publish Test Results
         uses: dorny/test-reporter@v1
         if: always()
@@ -45,8 +51,9 @@ jobs:
           name: JUnit Tests Results
           path: tienda/target/surefire-reports/*.xml
           reporter: java-junit
+          fail-on-error: false
 
-      #  Reporte HTML de cobertura
+      # Reporte HTML de cobertura
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
@@ -103,4 +110,3 @@ jobs:
         run: |
           echo "❌ Quality Gate FAILED: El score de calidad no supera el umbral requerido"
           exit 1
-

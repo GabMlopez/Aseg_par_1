@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11e26517-c587-4956-850a-f805d579f6c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/IntegrationTest.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tienda/src/test/java/com/empresa/tienda/integration/TiendaApiIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/IntegrationTest.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/IntegrationTest.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tienda/src/main/java/com/empresa/tienda/sqa/QualityScoringEngine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tienda/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda/src/test/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tienda/src/test/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

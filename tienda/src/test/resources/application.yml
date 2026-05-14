@@ -1,24 +1,24 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-        format_sql: false
+        format_sql: true
 
 jwt:
-  secret: clave-super-secreta-para-pruebas-unitarias-con-512bits-12345678901234567890
+  secret: "wqqv25sNNFHFBBDHJjfsdn2nsdo234om5dkd6fasqwqe112368v9wsa6czx641ads6as4wxx5g63ys"
   expiration: 86400000
 
 logging:
   level:
-    com.empresa.tienda: WARN
-    org.springframework.security: WARN
-    org.hibernate.SQL: WARN
+    com.empresa.tienda: DEBUG
+    org.springframework.security: DEBUG
