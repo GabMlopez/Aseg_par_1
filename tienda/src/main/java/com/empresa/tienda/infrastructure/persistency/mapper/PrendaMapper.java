@@ -4,6 +4,7 @@ import com.empresa.tienda.domain.model.Camisa;
 import com.empresa.tienda.domain.model.Pantalon;
 import com.empresa.tienda.domain.model.Prenda;
 import com.empresa.tienda.infrastructure.persistency.entity.PrendaEntity;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
 @Component

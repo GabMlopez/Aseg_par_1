@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ventaController {
     private final VentaService ventaService;
 
-    @PostMapping("/{prendaid}")
+    @PostMapping("/{prendaId}")
     public LogVenta vender(@PathVariable Long prendaId, @RequestParam Integer cantidad){
         return ventaService.realizarVenta(prendaId,cantidad);
     }

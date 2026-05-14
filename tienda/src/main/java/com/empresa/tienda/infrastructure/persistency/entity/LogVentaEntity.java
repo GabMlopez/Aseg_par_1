@@ -24,4 +24,5 @@ public class LogVentaEntity {
 
     @Column(name = "fecha_generacion")
     private LocalDateTime fechaGeneracion;
+
 }
