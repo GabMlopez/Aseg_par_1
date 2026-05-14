@@ -1,0 +1,106 @@
+name: CI - Pruebas y Cobertura
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tienda
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('tienda/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      # Coverage con Jacoco
+      - name: Run tests with coverage (JaCoCo)
+        run: mvn clean verify
+
+      #  Publicar resultados JUnit en GitHub Actions
+      - name: Publish Test Results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: JUnit Tests Results
+          path: tienda/target/surefire-reports/*.xml
+          reporter: java-junit
+
+      #  Reporte HTML de cobertura
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage-report
+          path: tienda/target/site/jacoco/
+          retention-days: 7
+
+      # Subir logs si fallan las pruebas
+      - name: Upload test logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failure-logs
+          path: tienda/target/surefire-reports/
+          retention-days: 5
+
+  # Quality Scoring Engine
+  quality-score:
+    name: Quality Score Check
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: always()
+    defaults:
+      run:
+        working-directory: tienda
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Run QualityScoringEngine tests
+        run: mvn test -Dtest=QualityScoringEngineTest
+
+      - name: Check score threshold
+        id: check-score
+        run: |
+          mvn test -Dtest=QualityScoringEngineTest 2>&1 | tee quality-output.txt
+          
+          if grep -q "FAILURE" quality-output.txt; then
+            echo "quality_check=failed" >> $GITHUB_OUTPUT
+          else
+            echo "quality_check=passed" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Quality Gate Result
+        if: steps.check-score.outputs.quality_check == 'failed'
+        run: |
+          echo "❌ Quality Gate FAILED: El score de calidad no supera el umbral requerido"
+          exit 1
+
