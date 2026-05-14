@@ -28,9 +28,9 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>25</java.version>
-		<maven.compiler.source>25</maven.compiler.source>
-		<maven.compiler.target>25</maven.compiler.target>
+		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<jjwt.version>0.12.6</jjwt.version>
 		<mapstruct.version>1.6.3</mapstruct.version>
 		<sonar.coverage.exclusions>**/config/**</sonar.coverage.exclusions>
@@ -193,6 +193,26 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.12</version>
+				<configuration>
+					<excludes>
+						<!-- Clase principal de Spring Boot -->
+						<exclude>com/empresa/tienda/TiendaApplication.class</exclude>
+						<!-- Entidades JPA (solo anotaciones/campos, sin lógica) -->
+						<exclude>com/empresa/tienda/infrastructure/persistency/entity/**</exclude>
+						<!-- Mappers generados por MapStruct -->
+						<exclude>com/empresa/tienda/infrastructure/persistency/mapper/**</exclude>
+						<!-- Adaptadores de repositorio JPA (delegan en Spring Data, sin lógica propia) -->
+						<exclude>com/empresa/tienda/infrastructure/persistency/adapter/**</exclude>
+						<!-- Repositorios Spring Data (interfaces auto-implementadas) -->
+						<exclude>com/empresa/tienda/infrastructure/persistency/repository/**</exclude>
+						<!-- Configuración de seguridad (boilerplate de Spring Security) -->
+						<exclude>com/empresa/tienda/infrastructure/security/SecurityConfig.class</exclude>
+						<!-- Filtro JWT (glue-code de Spring Security) -->
+						<exclude>com/empresa/tienda/infrastructure/security/JwtAuthenticationFilter.class</exclude>
+						<!-- UserDetailsService (adaptador de Spring Security) -->
+						<exclude>com/empresa/tienda/infrastructure/security/CustomUserDetailsService.class</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
@@ -213,6 +233,16 @@
 							<goal>check</goal>
 						</goals>
 						<configuration>
+							<excludes>
+								<exclude>com/empresa/tienda/TiendaApplication.class</exclude>
+								<exclude>com/empresa/tienda/infrastructure/persistency/entity/**</exclude>
+								<exclude>com/empresa/tienda/infrastructure/persistency/mapper/**</exclude>
+								<exclude>com/empresa/tienda/infrastructure/persistency/adapter/**</exclude>
+								<exclude>com/empresa/tienda/infrastructure/persistency/repository/**</exclude>
+								<exclude>com/empresa/tienda/infrastructure/security/SecurityConfig.class</exclude>
+								<exclude>com/empresa/tienda/infrastructure/security/JwtAuthenticationFilter.class</exclude>
+								<exclude>com/empresa/tienda/infrastructure/security/CustomUserDetailsService.class</exclude>
+							</excludes>
 							<rules>
 								<rule>
 									<element>BUNDLE</element>
@@ -229,6 +259,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
