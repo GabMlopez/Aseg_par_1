@@ -25,6 +25,6 @@ public class AuthController {
         return authService.register(usuario);
     }
 
-    record LoginRequest(String username, String password) {}
-    record AuthResponse(String token) {}
+    public record LoginRequest(String username, String password) {}
+    public record AuthResponse(String token) {}
 }
