@@ -34,7 +34,7 @@ export default function () {
     };
 
     let loginRes=http.post(
-        `${BASE_URL}/auth/login`,
+        `${BASE_URL}/auth`,
         loginPayload,
         params
     );
@@ -65,9 +65,21 @@ export default function () {
         'inventario responde':(r)=>r.status===200
     });
 
-    // Ventas
-    let ventas=http.get(
-        `${BASE_URL}/ventas`,
+    //Actualizar inventario para no quedarse sin prendas
+    let inventarioActualizado=http.patch(
+        `${BASE_URL}/inventario/1/stock?cantidad=20`,
+        null,
+        authHeaders
+    );
+
+    check(inventarioActualizado,{
+        'inventario actualizado':(r)=>r.status===200
+    });
+
+    // Ventas - Vender 2 Camisetas
+    let ventas=http.post(
+        `${BASE_URL}/ventas/1?cantidad=2`,
+        null,
         authHeaders
     );
 
