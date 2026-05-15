@@ -53,3 +53,84 @@ Arquitectura Hexagonal de 4 capas
 |       └── rest/              # Servicios Rest y controladores de la API
 ├──── Sqa/                     # Pruebas para medir calidad del Sw
 ```
+
+### Diagrama de Clases
+```mermaid
+classDiagram
+    class Usuario {
+        <<entity>>
+        +Long id
+        +String username
+        +String password
+        +String nombre
+        +LocalDateTime lastActive
+        +actualizarLastActive()
+    }
+    
+    class LogAcceso {
+        <<audit>>
+        +Long id
+        +Long usuarioId
+        +String actividad
+        +LocalDateTime fecha
+    }
+    
+    class Prenda {
+        <<interface>>
+        +Long getId()
+        +String getMarca()
+        +String getTamanio()
+        +Double getPrecio()
+        +Integer getCantidad()
+        +String getTipo()
+    }
+    
+    class Camisa {
+        <<entity>>
+        +Long id
+        +String marca
+        +String tamanio
+        +Double precio
+        +Integer cantidad
+        +TipoEstampado tipoEstampado
+        +getTipo()
+    }
+    
+    class Pantalon {
+        <<entity>>
+        +Long id
+        +String marca
+        +String tamanio
+        +Double precio
+        +Integer cantidad
+        +getTipo()
+    }
+    
+    class LogVenta {
+        <<audit>>
+        +Long id
+        +Long prendaId
+        +Double precioVenta
+        +LocalDateTime fechaGeneracion
+    }
+    
+    class TipoEstampado {
+        <<enumeration>>
+        PLASTICO
+        BORDADO
+    }
+
+    LogAcceso --> Usuario : "👤 usuarioId"
+    Prenda <|-- Camisa : «implements»
+    Prenda <|-- Pantalon : «implements»
+    LogVenta --> Prenda : "🛒 prendaId"
+    Camisa --> TipoEstampado : "usa"
+
+    style Usuario fill:#bbdefb,stroke:#1976d2,stroke-width:3px,color:#000
+    style LogAcceso fill:#ffccbc,stroke:#f57c00,stroke-width:3px,color:#000
+    style LogVenta fill:#ffccbc,stroke:#f57c00,stroke-width:3px,color:#000
+    style Prenda fill:#e1bee7,stroke:#8e24aa,stroke-width:3px,stroke-dasharray: 8 4,color:#000
+    style Camisa fill:#c8e6c9,stroke:#388e3c,stroke-width:3px,color:#000
+    style Pantalon fill:#c8e6c9,stroke:#388e3c,stroke-width:3px,color:#000
+    style TipoEstampado fill:#fff9c4,stroke:#fbc02d,stroke-width:3px,color:#000
+```
