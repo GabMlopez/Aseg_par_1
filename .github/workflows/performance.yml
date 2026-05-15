@@ -27,9 +27,10 @@ jobs:
         java-version: 21
 
     - name: Dar permisos
-      run: chmod +x ./mvnw
+      run: chmod +x ./tienda/mvnw
 
     - name: Levantar aplicación
+      working-directory: ./tienda
       run: |
         ./mvnw spring-boot:run &
         sleep 60
