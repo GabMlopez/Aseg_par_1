@@ -1,0 +1,83 @@
+name: OWASP ZAP Security Scan
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Para ejecutarlo manualmente cuando quieras
+
+jobs:
+  zap_scan:
+    name: Escaneo Dinámico (DAST)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tienda # Entra a tu carpeta de Java
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+          cache: 'maven'
+
+      # 1. Compilar y levantar la aplicación
+      - name: Levantar Spring Boot
+        run: |
+          mvn clean package -DskipTests
+          mvn spring-boot:run &
+          # Esperar al actuator/health si tienes Spring Actuator, o al root si no
+          timeout 120s bash -c 'until curl -sf localhost:8080/actuator/health 2>/dev/null || curl -sf localhost:8080 2>/dev/null; do sleep 5; done'
+          echo "✅ Spring Boot está arriba"
+
+      # 2. Obtener el token JWT haciendo login con las credenciales de prueba
+      - name: Obtener JWT Token
+        id: get_token
+        run: |
+          TOKEN=$(curl -s -X POST http://localhost:8080/auth \
+            -H "Content-Type: application/json" \
+            -d '{"username": "${{ secrets.ZAP_TEST_USER }}", "password": "${{ secrets.ZAP_TEST_PASSWORD }}"}' \
+            | grep -o '"token":"[^"]*"' | cut -d'"' -f4)
+
+          if [ -z "$TOKEN" ]; then
+            echo "❌ No se pudo obtener el token JWT. Revisa las credenciales o el endpoint /auth"
+            exit 1
+          fi
+
+          echo "✅ Token JWT obtenido correctamente"
+          # Guardarlo como output enmascarado
+          echo "::add-mask::$TOKEN"
+          echo "jwt=$TOKEN" >> $GITHUB_OUTPUT
+
+      # 3. Crear el archivo de configuración de ZAP con el token
+      #    Se crea en la raíz del repo para que el Docker de ZAP lo encuentre en /zap/wrk/
+      - name: Configurar Header de Autorización para ZAP
+        working-directory: ${{ github.workspace }}
+        run: |
+          echo "replacer.full_list(0).description=AuthToken"                           > zap_options.prop
+          echo "replacer.full_list(0).enabled=true"                                   >> zap_options.prop
+          echo "replacer.full_list(0).matchtype=REQ_HEADER"                           >> zap_options.prop
+          echo "replacer.full_list(0).matchstr=Authorization"                         >> zap_options.prop
+          echo "replacer.full_list(0).regex=false"                                    >> zap_options.prop
+          echo "replacer.full_list(0).replacement=Bearer ${{ steps.get_token.outputs.jwt }}" >> zap_options.prop
+          echo "✅ Archivo zap_options.prop creado en $(pwd)"
+
+      # 4. Obtener la IP del host para que el contenedor Docker de ZAP pueda alcanzar
+      #    el Spring Boot corriendo en el runner (localhost del runner ≠ localhost del contenedor)
+      - name: Obtener IP del host Docker
+        id: docker_host
+        run: echo "ip=$(ip route | grep default | awk '{print $3}')" >> $GITHUB_OUTPUT
+
+      # 5. Ejecutar el escaneo completo de ZAP
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.12.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}      # Para crear Issues automáticas en el repo
+          target: 'http://${{ steps.docker_host.outputs.ip }}:8080'
+          cmd_options: '-configfile /zap/wrk/zap_options.prop'
+          allow_issue_writing: true             # Descomenta si quieres Issues automáticas
+          # fail_action: false                    # Descomenta para que no falle el workflow con hallazgos
