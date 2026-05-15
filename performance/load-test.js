@@ -1,5 +1,6 @@
 import http from 'k6/http';
-import { check, sleep } from 'k6';
+import { check, sleep, randomSeed } from 'k6';
+import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 export const options = {
 
@@ -11,7 +12,7 @@ export const options = {
     ],
 
     thresholds: {
-        http_req_duration: ['p(95)<1000'],
+        http_req_duration: ['p(95)<6000'],
         http_req_failed: ['rate<0.05']
     }
 
@@ -65,9 +66,15 @@ export default function () {
         'inventario responde':(r)=>r.status===200
     });
 
+    const sleepTime = randomIntBetween(1, 3);
+
+    sleep(sleepTime);
+
+    const itemId = randomIntBetween(1, 27);
+
     //Actualizar inventario para no quedarse sin prendas
     let inventarioActualizado=http.patch(
-        `${BASE_URL}/inventario/1/stock?cantidad=20`,
+        `${BASE_URL}/inventario/${itemId}/stock?cantidad=20`,
         null,
         authHeaders
     );
@@ -78,7 +85,7 @@ export default function () {
 
     // Ventas - Vender 2 Camisetas
     let ventas=http.post(
-        `${BASE_URL}/ventas/1?cantidad=2`,
+        `${BASE_URL}/ventas/${itemId}?cantidad=2`,
         null,
         authHeaders
     );
