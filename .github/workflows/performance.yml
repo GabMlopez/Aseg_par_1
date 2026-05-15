@@ -1,0 +1,48 @@
+name: Performance Test
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  k6-load-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Clonar repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 21
+
+    - name: Dar permisos
+      run: chmod +x ./mvnw
+
+    - name: Levantar aplicación
+      run: |
+        ./mvnw spring-boot:run &
+        sleep 60
+
+    - name: Instalar k6
+      run: |
+        sudo gpg -k
+        sudo apt-get update
+        sudo apt-get install -y gnupg software-properties-common
+        curl -fsSL https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+        sudo apt-get update
+        sudo apt-get install k6
+
+    - name: Ejecutar pruebas de carga
+      run: k6 run performance/load-test.js
